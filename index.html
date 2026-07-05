@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Nani ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -17,64 +17,54 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-width:100vw;
-height:100vh;
-overflow:hidden;
+background:linear-gradient(135deg,#FFD54F,#FFCA28);
+min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#FFD54F,#FFCA28);
-position:relative;
+overflow:hidden;
+padding:20px;
 }
 
 .container{
-width:100%;
-height:100%;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
 text-align:center;
-padding:25px;
+width:100%;
+max-width:500px;
 }
 
 h1{
-font-size:38px;
 color:white;
+font-size:2.3rem;
 font-weight:800;
-text-shadow:3px 3px 10px rgba(0,0,0,.15);
 }
 
 h2{
-font-size:32px;
-margin-top:12px;
-color:#fff;
+margin-top:10px;
+color:white;
+font-size:1.8rem;
 }
 
-p{
-margin-top:12px;
-font-size:18px;
+.subtitle{
+margin-top:10px;
 color:white;
-opacity:.95;
+font-size:1.1rem;
 }
 
 .buttons{
-margin-top:45px;
-width:100%;
-height:180px;
+margin-top:40px;
 position:relative;
+height:180px;
 }
 
 button{
-width:150px;
+width:140px;
 height:60px;
 border:none;
-border-radius:50px;
+border-radius:40px;
 font-size:22px;
 font-weight:700;
 cursor:pointer;
-transition:.3s;
-box-shadow:0 10px 25px rgba(0,0,0,.15);
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
 }
 
 #yes{
@@ -82,50 +72,67 @@ background:#ff4fa3;
 color:white;
 }
 
-#yes:active{
-transform:scale(.95);
-}
-
 #no{
 position:absolute;
-background:white;
-color:#ff4fa3;
 left:58%;
 top:0;
+background:white;
+color:#ff4fa3;
 }
 
-#popup{
+#letter{
 display:none;
-margin-top:35px;
-font-size:28px;
-font-weight:bold;
-color:white;
-animation:zoom .5s;
+margin-top:25px;
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+text-align:left;
+animation:showLetter 0.8s ease;
+max-height:60vh;
+overflow:auto;
 }
 
-@keyframes zoom{
+#letter h3{
+text-align:center;
+color:#ff4fa3;
+margin-bottom:15px;
+}
+
+#letter p{
+line-height:1.8;
+color:#444;
+}
+
+.signature{
+margin-top:20px;
+font-weight:bold;
+color:#ff4fa3;
+text-align:right;
+}
+
+@keyframes showLetter{
 from{
-transform:scale(.5);
 opacity:0;
+transform:translateY(30px);
 }
 to{
-transform:scale(1);
 opacity:1;
+transform:translateY(0);
 }
 }
 
 .heart{
-position:absolute;
+position:fixed;
+bottom:-50px;
 font-size:30px;
-animation:fly linear forwards;
+animation:floatUp linear forwards;
+pointer-events:none;
 }
 
-@keyframes fly{
+@keyframes floatUp{
 0%{
-transform:translateY(100vh);
-opacity:0;
-}
-20%{
+transform:translateY(0);
 opacity:1;
 }
 100%{
@@ -141,62 +148,90 @@ opacity:0;
 
 <div class="container">
 
-<h1>Will you be my boyfriend? ❤️</h1>
-
+<h1>Will You Be My Boyfriend? ❤️</h1>
 <h2>Nani ❤️</h2>
-
-<p>From Your Love 💌</p>
+<p class="subtitle">I have something special to tell you...</p>
 
 <div class="buttons">
 <button id="yes">Yes 💖</button>
 <button id="no">No 😅</button>
 </div>
 
-<div id="popup">
-🥹❤️<br><br>
-You made me the happiest person alive!<br><br>
-💖💖💖
+<div id="letter">
+
+<h3>💌 A Letter For You 💌</h3>
+
+<p>
+Dear Nani,
+<br><br>
+From the moment you came into my life, you brought happiness,
+comfort, and countless beautiful memories.
+<br><br>
+Your smile brightens my day, your words bring me peace,
+and your presence makes everything feel special.
+<br><br>
+Life feels more beautiful when you're around.
+Thank you for being kind, caring, and wonderful.
+<br><br>
+Today I just want you to know how much you mean to me.
+No matter where life takes us, you will always hold a very special place in my heart.
+<br><br>
+I cherish every moment with you and look forward to creating many more beautiful memories together.
+<br><br>
+❤️ I Like You More Than Words Can Explain ❤️
+</p>
+
+<div class="signature">
+With Love,<br>
+Roshni ❤️
+</div>
+
 </div>
 
 </div>
 
 <script>
 
-const no = document.getElementById("no");
-const yes = document.getElementById("yes");
-const popup = document.getElementById("popup");
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const letter = document.getElementById("letter");
 
-function moveButton() {
-const x = Math.random() * (window.innerWidth - 170);
-const y = Math.random() * 150;
+function moveButton(){
 
-no.style.left = x + "px";
-no.style.top = y + "px";
+const x = Math.random() * (window.innerWidth - 180);
+const y = Math.random() * 180;
+
+noBtn.style.left = x + "px";
+noBtn.style.top = y + "px";
 }
 
-no.addEventListener("mouseover", moveButton);
-no.addEventListener("touchstart", moveButton);
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("touchstart", moveButton);
 
-yes.onclick = () => {
+yesBtn.addEventListener("click", ()=>{
 
-popup.style.display = "block";
+letter.style.display="block";
 
-for(let i = 0; i < 200; i++) {
+for(let i=0;i<150;i++){
 
-let h = document.createElement("div");
+const heart=document.createElement("div");
 
-h.className = "heart";
-h.innerHTML = Math.random() > 0.5 ? "❤️" : "💖";
+heart.className="heart";
+heart.innerHTML=Math.random()>0.5?"❤️":"💖";
 
-h.style.left = Math.random() * 100 + "vw";
-h.style.animationDuration = (3 + Math.random() * 3) + "s";
-h.style.fontSize = (20 + Math.random() * 25) + "px";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(20+Math.random()*25)+"px";
+heart.style.animationDuration=(3+Math.random()*4)+"s";
 
-document.body.appendChild(h);
+document.body.appendChild(heart);
 
-setTimeout(() => h.remove(), 6000);
+setTimeout(()=>{
+heart.remove();
+},7000);
+
 }
-};
+
+});
 
 </script>
 
