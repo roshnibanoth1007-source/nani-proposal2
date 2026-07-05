@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>For Nani ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+width:100vw;
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#FFD54F,#FFCA28);
+position:relative;
+}
+
+.container{
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:25px;
+}
+
+h1{
+font-size:38px;
+color:white;
+font-weight:800;
+text-shadow:3px 3px 10px rgba(0,0,0,.15);
+}
+
+h2{
+font-size:32px;
+margin-top:12px;
+color:#fff;
+}
+
+p{
+margin-top:12px;
+font-size:18px;
+color:white;
+opacity:.95;
+}
+
+.buttons{
+margin-top:45px;
+width:100%;
+height:180px;
+position:relative;
+}
+
+button{
+width:150px;
+height:60px;
+border:none;
+border-radius:50px;
+font-size:22px;
+font-weight:700;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+#yes{
+background:#ff4fa3;
+color:white;
+}
+
+#yes:active{
+transform:scale(.95);
+}
+
+#no{
+position:absolute;
+background:white;
+color:#ff4fa3;
+left:58%;
+top:0;
+}
+
+#popup{
+display:none;
+margin-top:35px;
+font-size:28px;
+font-weight:bold;
+color:white;
+animation:zoom .5s;
+}
+
+@keyframes zoom{
+from{
+transform:scale(.5);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
+
+.heart{
+position:absolute;
+font-size:30px;
+animation:fly linear forwards;
+}
+
+@keyframes fly{
+0%{
+transform:translateY(100vh);
+opacity:0;
+}
+20%{
+opacity:1;
+}
+100%{
+transform:translateY(-120vh);
+opacity:0;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Will you be my boyfriend? ❤️</h1>
+
+<h2>Nani ❤️</h2>
+
+<p>From Your Love 💌</p>
+
+<div class="buttons">
+<button id="yes">Yes 💖</button>
+<button id="no">No 😅</button>
+</div>
+
+<div id="popup">
+🥹❤️<br><br>
+You made me the happiest person alive!<br><br>
+💖💖💖
+</div>
+
+</div>
+
+<script>
+
+const no = document.getElementById("no");
+const yes = document.getElementById("yes");
+const popup = document.getElementById("popup");
+
+function moveButton() {
+const x = Math.random() * (window.innerWidth - 170);
+const y = Math.random() * 150;
+
+no.style.left = x + "px";
+no.style.top = y + "px";
+}
+
+no.addEventListener("mouseover", moveButton);
+no.addEventListener("touchstart", moveButton);
+
+yes.onclick = () => {
+
+popup.style.display = "block";
+
+for(let i = 0; i < 200; i++) {
+
+let h = document.createElement("div");
+
+h.className = "heart";
+h.innerHTML = Math.random() > 0.5 ? "❤️" : "💖";
+
+h.style.left = Math.random() * 100 + "vw";
+h.style.animationDuration = (3 + Math.random() * 3) + "s";
+h.style.fontSize = (20 + Math.random() * 25) + "px";
+
+document.body.appendChild(h);
+
+setTimeout(() => h.remove(), 6000);
+}
+};
+
+</script>
+
+</body>
+</html>
